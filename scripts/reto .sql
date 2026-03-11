@@ -44,6 +44,9 @@ where descripcion is null;
 select * from productos
 where precio >= money '2' and precio <= money '3';
 
+update productos set stock=0
+where descripcion is null;
+
 
 -- tabla 2 
 drop table cuentas
@@ -97,7 +100,8 @@ from cuentas
 where fecha_creacion 
 between '10/01/2026' and '10/03/2026';
 
-
+update cuentas set saldo=10
+where cedula_propietario like '17%'
 
 
 -- tabla 3 
@@ -146,7 +150,10 @@ select nombre, apeliido
 from estudiantes 
 where nombre like 'A%';
 
+update estudiantes set apeliido ='Hernandez'
+where cedula like '17%';
 
+select * from estudiantes 
 -- tabla 4 
 drop table registros 
 create table registros (
@@ -199,6 +206,9 @@ select hora
 from registros
 where hora > '8:00';
 
+update registros set cedula_empleado = '082345679'
+where fecha between '01/08/2026' and '31/08/2026';
+
 
 -- tabla 5 
 drop table videojuegos 
@@ -243,6 +253,9 @@ between 9 and 10;
 
 select * from videojuegos 
 where descripcion is null;
+
+update videojuegos set descripcion ='Mejor Puntuado'
+where valoracion > 9;
 
 
 -- table 6 
@@ -290,13 +303,18 @@ values('40', '96205', 5, 'D', '15/01/2026', '15:30');
 select * from transacciones 
 where tipo like 'D%';
 
-select * from transacciones 
+select * from transacciones and  
 where monto 
 between money '200' and money  '2000';
 
 select codigo, monto , tipo, fecha 
 from transacciones 
 where fecha is null;
+
+update transacciones set tipo = 'T'
+where monto >='100' and monto <'500'
+and fecha between '01/09/2026' and '30/09/2026'
+and hora between '14:00' and '20:00';
 
 
 

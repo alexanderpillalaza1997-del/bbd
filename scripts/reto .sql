@@ -47,6 +47,8 @@ where precio >= money '2' and precio <= money '3';
 update productos set stock=0
 where descripcion is null;
 
+delete from productos 
+where descripcion is null
 
 -- tabla 2 
 drop table cuentas
@@ -103,6 +105,9 @@ between '10/01/2026' and '10/03/2026';
 update cuentas set saldo=10
 where cedula_propietario like '17%'
 
+delete from cuentas 
+where cedula_propietario like '10%'
+
 
 -- tabla 3 
 drop table estudiantes;
@@ -152,6 +157,9 @@ where nombre like 'A%';
 
 update estudiantes set apeliido ='Hernandez'
 where cedula like '17%';
+
+delete from estudiantes
+where cedula like '%10'
 
 select * from estudiantes 
 -- tabla 4 
@@ -209,6 +217,8 @@ where hora > '8:00';
 update registros set cedula_empleado = '082345679'
 where fecha between '01/08/2026' and '31/08/2026';
 
+delete from registros
+where fecha between '01/08/2026' and '31/08/2026';
 
 -- tabla 5 
 drop table videojuegos 
@@ -256,6 +266,9 @@ where descripcion is null;
 
 update videojuegos set descripcion ='Mejor Puntuado'
 where valoracion > 9;
+
+delete from videojuegos
+where valoracion < 7;
 
 
 -- table 6 
@@ -316,6 +329,9 @@ where monto >='100' and monto <'500'
 and fecha between '01/09/2026' and '30/09/2026'
 and hora between '14:00' and '20:00';
 
+delete from transacciones
+where fecha between '01/08/2026' and '31/08/2026'
+and hora between '14:00' and '18:00';
 
 
 

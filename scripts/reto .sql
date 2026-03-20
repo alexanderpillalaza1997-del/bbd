@@ -50,6 +50,15 @@ where descripcion is null;
 delete from productos 
 where descripcion is null
 
+select * from productos 
+where stock =10 and precio < money '10';
+
+select nombre, stock from productos 
+where nombre like '%m%' or descripcion like '% %';
+
+select * from productos 
+where descripcion is null or stock =0;
+
 -- tabla 2 
 drop table cuentas
 create table cuentas(
@@ -108,6 +117,14 @@ where cedula_propietario like '17%'
 delete from cuentas 
 where cedula_propietario like '10%'
 
+select numero_cuenta, saldo from cuentas 
+where saldo >'100' and saldo <'1000';
+
+select * from cuentas 
+where fecha_creacion between '19/01/2026' and '19/03/2025';
+
+select * from cuentas 
+where saldo = '0' or cedula_propietario like '%2';
 
 -- tabla 3 
 drop table estudiantes;
@@ -161,7 +178,16 @@ where cedula like '17%';
 delete from estudiantes
 where cedula like '%10'
 
-select * from estudiantes 
+select nombre, apeliido from estudiantes
+where nombre like 'M%' or apeliido like '%z';
+
+select nombre from estudiantes 
+where cedula like '&32&' or cedula like '18%';
+
+select nombre, apeliido from estudiantes 
+where cedula like '%16' or cedula like '17%';
+
+
 -- tabla 4 
 drop table registros 
 create table registros (
@@ -220,6 +246,23 @@ where fecha between '01/08/2026' and '31/08/2026';
 delete from registros
 where fecha between '01/08/2026' and '31/08/2026';
 
+select * from registros 
+where fecha between '01/09/2026' and '30/09/2026' 
+or cedula_empleado like '17%';
+
+select * from registros 
+where fecha between '01/08/2026' and '31/08/2026' 
+and cedula_empleado like '17%'
+and hora between '08:00' and '12:00';
+
+select * from registros 
+where fecha between '01/08/2026' and '31/08/2026' 
+and cedula_empleado like '17%'
+and hora between '08:00' and '12:00' 
+or fecha between '01/09/2026' and '30/09/2026' 
+and cedula_empleado like '08%'
+and hora between '09:00' and '13:00'; 
+
 -- tabla 5 
 drop table videojuegos 
 create table videojuegos (
@@ -269,6 +312,16 @@ where valoracion > 9;
 
 delete from videojuegos
 where valoracion < 7;
+
+select * from videojuegos 
+where nombre like '%c%' or valoracion = '7';
+
+select * from videojuegos 
+where codigo between '3' and '7' or valoracion ='7';
+
+select * from videojuegos 
+where valoracion >'7' and nombre like 'C%' 
+or valoracion > '8' and nombre like 'D%';
 
 
 -- table 6 
@@ -333,8 +386,13 @@ delete from transacciones
 where fecha between '01/08/2026' and '31/08/2026'
 and hora between '14:00' and '18:00';
 
+select * from transacciones 
+where tipo='c' and numero_cuenta between '222001' and '222004';
 
-
+select * from transacciones 
+where codigo between '1' and '5'
+or numero_cuenta between '22002' and '22004'
+or fecha between '26/05/2026' and '29/05/2026';
 
 
 
